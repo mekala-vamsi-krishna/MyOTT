@@ -32,6 +32,7 @@ struct MovieDetailListView: View {
     
     let movie: Movie
     @State private var selectedTrailer: MovieVideo?
+    @State private var isFavourite = false
     let imageLoader = ImageLoader()
     
     var body: some View {
@@ -44,6 +45,13 @@ struct MovieDetailListView: View {
                 Text("·")
                 Text(movie.yearText)
                 Text(movie.durationText)
+                Spacer()
+                Button {
+                    isFavourite.toggle()
+                } label: {
+                    Image(systemName: isFavourite ? "heart.fill" : "heart")
+                        .foregroundColor(isFavourite ? .red : .black)
+                }
             }
             
             Text(movie.overview)
